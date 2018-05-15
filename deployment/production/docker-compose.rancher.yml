@@ -26,7 +26,7 @@ services:
             - db
 
   uwsgi:
-    image: dimasciput/docker-healthyrivers-uwsgi:latest
+    image: dimasciput/docker-limpopobims-uwsgi:stable
     hostname: uwsgi
     environment:
       - DATABASE_NAME=gis
@@ -69,7 +69,7 @@ services:
 
   # This is normally the main entry point for a production server
   web:
-    image: dimasciput/healthyrivers_nginx:latest
+    image: dimasciput/limpopobims_nginx:latest
     hostname: nginx
     depends_on:
       - uwsgi
