@@ -29,12 +29,11 @@ section {
     -o-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-    height: 100%;
     margin-bottom: 50px;
 }
 
 #about {
-    background-color: #aad993;
+    background-color: #333333;
     color: white;
     width: 100%;
     padding: 12px 0;
@@ -43,11 +42,6 @@ section {
 .footer-shrink {
     background-color: rgba(170, 217, 147, 0.5) !important;
     transition: 0.3s;
-}
-
-.section-heading {
-    margin-top: 0;
-    margin-bottom: 20px;
 }
 
 ::-moz-selection {
@@ -157,16 +151,37 @@ header.masthead p {
     margin: 0 auto;
 }
 
+.fish-icon {
+    width: 110px !important;
+    height: 110px !important;
+    position: absolute;
+    margin-top: 40px;
+    margin-left: -55px;
+}
+
 .bullet {
-    width: 120px;
-    height: 120px;
-    border-radius: 60px;
-    border: 1px solid #436461;
+    width: 130px;
+    height: 130px;
+    border-radius: 75px;
+    border: 1px solid #000;
     position: absolute;
     margin: 0;
     display: block;
-    left: 38px;
-    top: 80px;
+    left: 35px;
+    top: 30px;
+
+  -webkit-box-shadow:
+    0 0 0 5px #ffcc00,
+    inset 0 0 0 5px #ffcc00;
+  -moz-box-shadow:
+    0 0 0 5px #ffcc00,
+    inset 0 0 0 5px #ffcc00;
+  -o-box-shadow:
+    0 0 0 5px #ffcc00,
+    inset 0 0 0 5px #ffcc00;
+  box-shadow:
+    0 0 0 5px #ffcc00,
+    inset 0 0 0 5px #ffcc00;
 }
 
 .carousel-item {
@@ -250,15 +265,6 @@ header.masthead p {
 html, body {
     margin: 0;
     width: 100%;
-    height: 100%;
-}
-
-.fish-icon {
-    width: 140px !important;
-    height: 140px !important;
-    position: absolute;
-    margin-top: 22px;
-    margin-left: -71px;
 }
 
 .crab {
@@ -292,23 +298,31 @@ html, body {
     background-color: #436461;
 }
 
+.section-heading-container {
+    border-bottom: 1px solid #1b900d;
+    padding-bottom: 0;
+    margin-bottom: 25px;
+}
+
 .section-heading {
-    color: #a02246;
-    font-weight: normal !important;
+    color: #1b900d;
+    font-weight: lighter !important;
     font-size: 1.75em !important;
+    margin-top: 0;
 }
 
 .total-data {
+    padding-top: 170px;
     font-weight: bold;
     font-size: 20px;
-    color: #436461;
+    color: #000;
     margin-bottom: 0;
 }
 
 .total-data-desc {
     font-weight: 100;
-    font-size: 20px;
-    color: #436461;
+    font-size: 17px;
+    color: #000;
     margin-bottom: 0;
 }
 
@@ -317,12 +331,14 @@ html, body {
 }
 
 .about-links {
-    border-left: 1px solid white;
+    text-align: right;
+    border-right: 1px solid #ffcc00;
 }
 
 .about-links>p {
-    margin: 3px 0;
+    margin: 8px 0;
     font-size: 11pt;
+    font-weight: lighter;
 }
 
 .dropdown-toggle {
