@@ -65,6 +65,7 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     absolute_path('core', 'base_static'),
     absolute_path('fish', 'static'),
+    absolute_path('base', 'static'),
 )
 
 # List of finder classes that know how to find static files in
@@ -102,6 +103,7 @@ TEMPLATES = [
             # project level templates
             absolute_path('core', 'base_templates'),
             absolute_path('fish', 'templates'),
+            absolute_path('base', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
