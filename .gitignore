@@ -128,3 +128,4 @@ deployment/docker/projecta.tar.gz
 celerybeat-schedule
 django_project/node_modules/
 optimized.js
+tmp/
