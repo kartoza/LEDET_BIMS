@@ -1,10 +1,11 @@
-version: '2.2'
+
+version: '2'
 services:
 
   db:
     image: geonode/postgis:9.6
     restart: on-failure
-    container_name: db4${COMPOSE_PROJECT_NAME}
+    container_name: db4geonode
     stdin_open: true
     # tty: true
     labels:
@@ -13,12 +14,15 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
       - dbbackups:/pg_backups
-    env_file:
-      - ./scripts/docker/env/production/db.env
+    environment:
+      GEONODE_DATABASE: geonode
+      GEONODE_DATABASE_PASSWORD: geonode
+      GEONODE_GEODATABASE: geonode_data
+      GEONODE_GEODATABASE_PASSWORD: geonode_data
 
   geo-db:
     image: kartoza/postgis:9.6-2.4
-    container_name: geo-db-4${COMPOSE_PROJECT_NAME}
+    container_name: geo-db-4geonode
     stdin_open: true
     environment:
       ALLOW_IP_RANGE: 0.0.0.0/0
@@ -35,7 +39,7 @@ services:
 
   dbbackups-django:
     image: kartoza/pg-backup:9.6
-    container_name: dbbackups-django-4${COMPOSE_PROJECT_NAME}
+    container_name: dbbackups-django-4geonode
     stdin_open: true
     environment:
       DUMPPREFIX: PG_geonode_django
@@ -54,7 +58,7 @@ services:
 
   dbbackups-geonode_data:
     image: kartoza/pg-backup:9.6
-    container_name: dbbackups-geonode_data-4${COMPOSE_PROJECT_NAME}
+    container_name: dbbackups-geonode_data-4geonode
     stdin_open: true
     environment:
       DUMPPREFIX: PG_geonode_data
@@ -73,7 +77,7 @@ services:
 
   dbbackups-geo-db:
     image: kartoza/pg-backup:9.6
-    container_name: dbbackups-geo-db-4${COMPOSE_PROJECT_NAME}
+    container_name: dbbackups-geo-db-4geonode
     stdin_open: true
     environment:
       DUMPPREFIX: PG_dbbackups-geo-db
@@ -92,7 +96,7 @@ services:
 
   btsync-data:
     image: kartoza/btsync
-    container_name: btsync-data-4${COMPOSE_PROJECT_NAME}
+    container_name: btsync-data-4geonode
     stdin_open: true
     environment:
       DEVICE: PostGISDatabase
@@ -101,12 +105,12 @@ services:
         org.geonode.component: btsync-data
         org.geonode.instance.name: geonode
     volumes:
-    - db-backups:/web:rw
+    - dbbackups:/web:rw
     - geoserver-data-dir:/web:rw
 
   smtp:
     image: catatnight/postfix
-    container_name: smtp-4${COMPOSE_PROJECT_NAME}
+    container_name: smtp-4geonode
     environment:
       - maildomain=kartoza.com
       - smtp_user=noreply:docker
@@ -114,7 +118,7 @@ services:
   elasticsearch:
     image: elasticsearch
     restart: on-failure
-    container_name: elasticsearch-4${COMPOSE_PROJECT_NAME}
+    container_name: elasticsearch-4geonode
     stdin_open: true
     # tty: true
     labels:
@@ -124,7 +128,7 @@ services:
   rabbitmq:
     image: rabbitmq
     restart: on-failure
-    container_name: rabbitmq-4${COMPOSE_PROJECT_NAME}
+    container_name: rabbitmq-4geonode
     stdin_open: true
     tty: true
     labels:
@@ -134,7 +138,7 @@ services:
   django:
     restart: on-failure
     image: geonode/geonode:latest
-    container_name: django-4${COMPOSE_PROJECT_NAME}
+    container_name: django-4geonode
     stdin_open: true
     # tty: true
     labels:
@@ -148,13 +152,32 @@ services:
     command: django-admin.py runserver 0.0.0.0:8000 --settings=geonode.settings
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env_file:
-      - ./scripts/docker/env/production/django.env
+    environment:
+      GEONODE_INSTANCE_NAME: geonode
+      GEONODE_LB_HOST_IP: ''
+      GEONODE_LB_PORT: ''
+      DATABASE_URL: postgres://postgres:postgres@db:5432/postgres
+      DEFAULT_BACKEND_DATASTORE: datastore
+      GEONODE_DATABASE: geonode
+      GEONODE_DATABASE_PASSWORD: geonode
+      GEONODE_GEODATABASE: geonode_data
+      GEONODE_GEODATABASE_PASSWORD: geonode_data
+      BROKER_URL: amqp://guest:guest@rabbitmq:5672/
+      DJANGO_SETTINGS_MODULE: geonode.settings
+      ALLOWED_HOSTS: '[''django'',]'
+      DOCKER_ENV: production
+      UWSGI_CMD: uwsgi --ini /usr/src/app/uwsgi.ini
+      IS_CELERY: 'false'
+      C_FORCE_ROOT: '1'
+      GEOSERVER_PUBLIC_LOCATION: http://geonode/geoserver/
+      GEOSERVER_LOCATION: http://geonode/geoserver/
+      SITEURL: http://geonode/
+      EMAIL_ENABLE: 'true'
 
   celery:
     restart: on-failure
     image: geonode/geonode:latest
-    container_name: celery-4${COMPOSE_PROJECT_NAME}
+    container_name: celery-4geonode
     stdin_open: true
     # tty: true
     labels:
@@ -168,13 +191,32 @@ services:
     command: celery worker --app=geonode.celery_app:app -B -l INFO
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env_file:
-      - ./scripts/docker/env/production/celery.env
+    environment:
+      GEONODE_INSTANCE_NAME: geonode
+      GEONODE_LB_HOST_IP: ''
+      GEONODE_LB_PORT: ''
+      DATABASE_URL: postgres://postgres:postgres@db:5432/postgres
+      DEFAULT_BACKEND_DATASTORE: datastore
+      GEONODE_DATABASE: geonode
+      GEONODE_DATABASE_PASSWORD: geonode
+      GEONODE_GEODATABASE: geonode_data
+      GEONODE_GEODATABASE_PASSWORD: geonode_data
+      BROKER_URL: amqp://guest:guest@rabbitmq:5672/
+      DJANGO_SETTINGS_MODULE: geonode.settings
+      ALLOWED_HOSTS: '[''django'',]'
+      DOCKER_ENV: production
+      CELERY_CMD: celery worker --app=geonode.celery_app:app --broker=amqp://guest:guest@rabbitmq:5672/ -B -l INFO
+      IS_CELERY: 'true'
+      C_FORCE_ROOT: '1'
+      GEOSERVER_PUBLIC_LOCATION: http://geonode/geoserver/
+      GEOSERVER_LOCATION: http://geonode/geoserver/
+      SITEURL: http://geonode/
+      EMAIL_ENABLE: 'true'
 
   consumers:
     image: geonode/geonode:latest
     restart: on-failure
-    container_name: consumers-4${COMPOSE_PROJECT_NAME}
+    container_name: consumers-4geonode
     stdin_open: true
     # tty: true
     labels:
@@ -188,33 +230,55 @@ services:
     command: python manage.py runmessaging
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    env_file:
-      - ./scripts/docker/env/production/django.env
+    environment:
+      GEONODE_INSTANCE_NAME: geonode
+      GEONODE_LB_HOST_IP: ''
+      GEONODE_LB_PORT: ''
+      DATABASE_URL: postgres://postgres:postgres@db:5432/postgres
+      DEFAULT_BACKEND_DATASTORE: datastore
+      GEONODE_DATABASE: geonode
+      GEONODE_DATABASE_PASSWORD: geonode
+      GEONODE_GEODATABASE: geonode_data
+      GEONODE_GEODATABASE_PASSWORD: geonode_data
+      BROKER_URL: amqp://guest:guest@rabbitmq:5672/
+      DJANGO_SETTINGS_MODULE: geonode.settings
+      ALLOWED_HOSTS: '[''django'',]'
+      DOCKER_ENV: production
+      UWSGI_CMD: uwsgi --ini /usr/src/app/uwsgi.ini
+      IS_CELERY: 'false'
+      C_FORCE_ROOT: '1'
+      GEOSERVER_PUBLIC_LOCATION: http://geonode/geoserver/
+      GEOSERVER_LOCATION: http://geonode/geoserver/
+      SITEURL: http://geonode/
+      EMAIL_ENABLE: 'true'
 
   geoserver:
     image: kartoza/geoserver:2.12.x
     restart: on-failure
-    container_name: geoserver-4${COMPOSE_PROJECT_NAME}
+    container_name: geoserver-4geonode
     stdin_open: true
     # tty: true
     labels:
         org.geonode.component: geoserver
         org.geonode.instance.name: geonode
     depends_on:
-      - db
       - geo-db
     ports:
       - 8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - geoserver-data-dir:/opt/geoserver/data_dir
-    env_file:
-      - ./scripts/docker/env/production/geoserver.env
+    environment:
+      DOCKERHOST: ''
+      GEONODE_LB_HOST_IP: ''
+      GEONODE_LB_PORT: ''
+      PUBLIC_PORT: '80'
+      DOCKER_HOST_IP: ''
 
   geonode:
     image: geonode/nginx:geoserver
     restart: on-failure
-    container_name: nginx-4${COMPOSE_PROJECT_NAME}
+    container_name: nginx-4geonode
     stdin_open: true
     # tty: true
     labels:
@@ -229,7 +293,7 @@ services:
   data-dir-conf:
     image: geonode/geoserver_data:2.12.x
     restart: on-failure
-    container_name: gsconf-4${COMPOSE_PROJECT_NAME}
+    container_name: gsconf-4geonode
     labels:
         org.geonode.component: conf
         org.geonode.instance.name: geonode
@@ -240,10 +304,10 @@ services:
 volumes:
 
   geoserver-data-dir:
-    name: ${COMPOSE_PROJECT_NAME}-gsdatadir
+
   dbdata:
-    name: ${COMPOSE_PROJECT_NAME}-dbdata
+
   postgis-data:
-    name: ${COMPOSE_PROJECT_NAME}-postgis-data
+
   dbbackups:
-    name: ${COMPOSE_PROJECT_NAME}-dbbackups
+
