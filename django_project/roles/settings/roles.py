@@ -13,11 +13,30 @@ class DataAdmin(AbstractUserRole):
     }
 
 
-class User(AbstractUserRole):
+class GisUser(AbstractUserRole):
     available_permissions = {}
 
 
-class Validator(AbstractUserRole):
-    available_permissions = {
-        'can_validate_data': True
-    }
+class BiodiversityManagement(AbstractUserRole):
+    available_permissions = {}
+
+
+class IntegratedEnvironmentalManagement(AbstractUserRole):
+    available_permissions = {}
+
+
+class IntegratedPollutionWaste(AbstractUserRole):
+    available_permissions = {}
+
+
+class ProtectedAreaManagement(AbstractUserRole):
+    available_permissions = {}
+
+
+class EnvironmentalEmpowermentServices(AbstractUserRole):
+    available_permissions = {}
+
+
+class WildlifeTradeRegulation(AbstractUserRole):
+    available_permissions = {}
+
