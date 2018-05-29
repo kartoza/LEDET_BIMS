@@ -22,7 +22,6 @@ urlpatterns = [
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('bims.urls')),
-    url(r'^', include('fish.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
 ]
 
