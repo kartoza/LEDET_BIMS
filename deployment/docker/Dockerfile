@@ -7,7 +7,7 @@ RUN export DEBIAN_FRONTEND=noninteractive
 ENV DEBIAN_FRONTEND noninteractive
 RUN dpkg-divert --local --rename --add /sbin/initctl
 
-RUN apt-get update -y
+RUN apt-get update -y --fix-missing
 
 RUN apt-get install -y python3-pip \
     python-gdal \
