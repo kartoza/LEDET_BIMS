@@ -25,7 +25,7 @@
 {% endblock %}
 {% block container %}
     <div class="content" style="height: 100%;">
-        {% block content %}{{ bock.super }}
+        {% block content %}
 
     <style>
         .form-group .help-block {
@@ -41,32 +41,45 @@
 
         #name {
                 color: #CEE9F2;
-                font-size: large;
+                font-size: 15px;
             }
         #email {
                 color: #CEE9F2;
-                font-size: large;
+                font-size: 15px;
             }
 
-         #subject {
+        #subject {
                 color: #CEE9F2;
-                font-size: large;
+                font-size: 15px;
             }
 
         #description {
                 color: #CEE9F2;
-                font-size: large;
+                font-size: 15px;
             }
-        .center_div{
-        margin: 0 auto;
-        width:100% /* value of your choice which suits your alignment */
-    }
+
+        #title {
+            color: #CEE9F2;
+            font-size: 30px;
+            position: center;
+            padding-left: 35%;
+        }
+
+        #submitt {
+            color: yellow;
+        }
     </style>
-    <div class="container">
+
+    <div class="container" style="padding-top: 2%">
+
         <div class="row">
-            <div class="col-lg-12 center_div">
+            <div class="col-sm-12 col-sm-offset-1">
                 <div class="contact_us_form">
-                    <h2 class="text-center title">Contact Us</h2>
+                    <div class="row">
+        <div class="col-lg-12">
+            <h2 id="title">Contact Us</h2>
+        </div>
+    </div>
                     <br />
                     <form action="." method="post" name="feedback" class="form-horizontal">{% csrf_token %}
                         <div class="form-group {% if form.name.errors %}has-error{% endif %}">
@@ -113,7 +126,7 @@
 
                         <div class="row">
                             <div class="col-sm-8">
-                                <input class="btn btn-primary pull-right" type="submit" value="Send Feedback"/>
+                                <input class="btn btn-primary pull-right" id="submitt" type="submit" value="Send Feedback"/>
                             </div>
                         </div>
                     </form>
