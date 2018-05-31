@@ -23,6 +23,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('bims.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
+    url('^contact/', include('contactus.urls')),
 ]
 
 if settings.DEBUG:

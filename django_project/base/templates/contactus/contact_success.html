@@ -1,0 +1,68 @@
+{% load staticfiles %}
+{% load i18n %}
+{% block css_head %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css" rel="stylesheet" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Chosen library -->
+    <link rel="stylesheet" href="{% static 'chosen/chosen.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/account.css' %}">
+{% endblock %}
+
+{% block js_head %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.min.js"></script>
+
+    <script src="{% static 'js/libs/chosen/chosen.jquery.min.js' %}"></script>
+    <script src="{% static 'js/form.js' %}"></script>
+
+{% endblock %}
+
+{% block container %}
+    <div class="content" style="height: 100%;">
+        {% block content %}
+
+<style>
+  p {
+    font-size: 1.15em;
+  }
+#message {
+    opacity: 10;
+    color: #CEE9F2;
+    {#font-weight: bold;#}
+    font-size: x-large;
+}
+a:hover{
+    text-decoration: none;
+}
+a {
+        color: yellow;
+}
+</style>
+            <div class="container" id="message">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="text-center title p-3 mb-2
+                        bg-gradient-success text-white">Thank You</h2>
+
+                        <p class="text-center p-3 mb-2 bg-gradient-success text-white">We appreciate your feedback
+                            .<br />
+                        Someone from the team will be in touch with you shortly.</p>
+
+                        <div class="col-lg-12 center-block"
+                                style="padding-left:45%;">
+                            <div class="btn btn-success"><a href="/">Home Page</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock %}
+{% endblock %}
+</div>
