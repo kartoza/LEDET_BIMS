@@ -91,3 +91,8 @@ BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
 
 # Contact us settings
 CONTACT_US_EMAIL = 'alison@kartoza.com'
+
+
+SERVER_EMAIL = 'alison@kartoza.com'
+EMAIL_HOST = 'kartoza.com'
+DEFAULT_FROM_EMAIL = 'alison@kartoza.com'
