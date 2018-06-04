@@ -56,3 +56,5 @@ GRUNT_MODULES = {
         'optimized': 'js/optimized.js',
     }
 }
+
+ACCOUNT_ADAPTER = 'base.adapters.account_adapter.AccountAdapter'
