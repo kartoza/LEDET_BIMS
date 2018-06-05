@@ -57,4 +57,4 @@ GRUNT_MODULES = {
     }
 }
 
-ACCOUNT_ADAPTER = 'base.adapters.account_adapter.AccountAdapter'
+ACCOUNT_ADAPTER = 'bims.adapters.account_adapter.AccountAdapter'
