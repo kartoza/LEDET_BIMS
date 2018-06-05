@@ -43,7 +43,7 @@
                         {% if redirect_field_value %}
                             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
                         {% endif %}
-                        <button class="login custom-form-submit btn-login" type="submit">{% trans "LOGIN" %}</button>
+                        <button class="login custom-form-submit btn-login" type="submit" style="display: none">{% trans "LOGIN" %}</button>
                     </form>
 
                     {% if socialaccount_providers %}
@@ -53,13 +53,16 @@
                         </div>
 
                         <div class="row">
-                        <div class="github-button btn-social-login">
+                        <div class="github-button btn-social-login" style="display: none">
                             <div class="text-button">LOGIN WITH GITHUB</div>
                         </div>
-                        <div class="google-button btn-social-login">
+                        <div class="google-button btn-social-login" style="display: none">
                             <div class="text-button">LOGIN WITH GOOGLE</div>
                         </div>
                         </div>
+
+                        <div id="captcha-info"><span id="warning-captcha">Please verify that you are not a bot first.</span><br/></div>
+                        <div class="g-recaptcha" data-callback="enableBtn"></div>
 
                         {% include "socialaccount/snippets/login_extra.html" %}
 
@@ -82,4 +85,19 @@
 
 {% block foot %}
     <script src="{% static "js/libs/bootstrap-4.0.0/js/bootstrap.min.js" %}"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=CaptchaCallback&render=explicit&hl=en"></script>
+    <script type="text/javascript">
+        var CaptchaCallback = function(){
+          $('.g-recaptcha').each(function(){
+            grecaptcha.render(this,{'sitekey' : '6LfuEF0UAAAAAPfKni-Wm7i95P3pxHMPINfGW64a'} );
+          })
+        };
+
+        function enableBtn(){
+            $('.btn-login').show();
+            $('.btn-social-login').show();
+            $('#warning-captcha').html('Verified');
+        }
+
+    </script>
 {% endblock %}
