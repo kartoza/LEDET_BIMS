@@ -13,11 +13,15 @@ class DataAdmin(AbstractUserRole):
     }
 
 
-class GisUser(AbstractUserRole):
+class BiodiversityManagement(AbstractUserRole):
     available_permissions = {}
 
 
-class BiodiversityManagement(AbstractUserRole):
+class EnvironmentalResearchAndPlanning(AbstractUserRole):
+    available_permissions = {}
+
+
+class EnvironmentalImpactManagement(AbstractUserRole):
     available_permissions = {}
 
 
@@ -33,10 +37,17 @@ class ProtectedAreaManagement(AbstractUserRole):
     available_permissions = {}
 
 
-class EnvironmentalEmpowermentServices(AbstractUserRole):
-    available_permissions = {}
-
-
 class WildlifeTradeRegulation(AbstractUserRole):
     available_permissions = {}
 
+
+class SouthAfricanNationalBiodiversityInstitute(AbstractUserRole):
+    available_permissions = {}
+
+
+class PolokwaneMunicipality(AbstractUserRole):
+    available_permissions = {}
+
+
+class EnvironmentalAssessmentPractitioners(AbstractUserRole):
+    available_permissions = {}
