@@ -13,21 +13,12 @@
 {% endblock %}
 
 {% block js_head %}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="https://cdn.rawgit.com/leafo/sticky-kit/v1.1.2/jquery.sticky-kit.min.js"></script>
-
-    <script src="{% static 'js/libs/chosen/chosen.jquery.min.js' %}"></script>
-    <script src="{% static 'js/form.js' %}"></script>
+    <!-- <script src="{% static 'js/form.js' %}"></script> -->
 
 {% endblock %}
 {% block container %}
-    <div class="content" style="height: 100%;">
-        {% block content %}
 
-    <style>
+<style>
         .form-group .help-block {
             display: none;
         }
@@ -38,57 +29,27 @@
         p.decoy {
             display: none !important;
         }
-
-        #name {
-                color: #CEE9F2;
-                font-size: 15px;
-            }
-        #email {
-                color: #CEE9F2;
-                font-size: 15px;
-            }
-
-        #subject {
-                color: #CEE9F2;
-                font-size: 15px;
-            }
-
-        #description {
-                color: #CEE9F2;
-                font-size: 15px;
-            }
-
-        #title {
-            color: #CEE9F2;
-            font-size: 30px;
-            position: center;
-            padding-left: 35%;
-        }
-
-        #submitt {
-            color: yellow;
-        }
-    .bg-secondary {
-         background-blend-mode: darken;
-        opacity: 0.3%;
-    }
+      
     </style>
+    <div class="content" style="height: 100%;">
+        {% block content %}
 
-    <div class="container bg-secondary" style="padding-top: 2%;">
-
-        <div class="row">
-            <div class="col-sm-12 col-sm-offset-1">
-                <div class="contact_us_form">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h2 id="title">Contact Us</h2>
-                        </div>
-                    </div>
-                    <br />
-                    <form action="." method="post" name="feedback"  class="form-horizontal" id="contactus">{% csrf_token %}
+        <div class="content" style="height: 100%;">
+            {% csrf_token %}
+            <div class="container" style="height: 100%;">
+                <div class="custom-form-container" style="margin-top: 40px;">
+                    <h1>{% trans "Contact Us" %}</h1>
+                    <form class="signup" id="signup_form" method="POST" action="{% url 'account_signup' %}">{% csrf_token %}
+                        {% if form.non_field_errors %}
+                            <div class="alert alert-warning">
+                                {% for error in form.non_field_errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                         <div class="form-group {% if form.name.errors %}has-error{% endif %}">
-                            <label for="name" id="name" class="col-sm-2 control-label">Name</label>
-                            <div class="col-sm-6">
+                            <label for="name" id="name" class="control-label">Name</label>
+                            <div class="form-group">
                                 <input type="text" name="name" class="form-control"
                                 value="{% if form.data.name %}{{form.data.name}}{% else %}{{form.initial.name}}{% endif %}" />
                                 <p class="help-block">Name is a required field</p>
@@ -96,9 +57,9 @@
                         </div>
                         <div class="visualclear"></div>
                         <div class="form-group {% if form.email.errors %}has-error{% endif %}">
-                            <label for="email" id="email" class="col-sm-2
+                            <label for="email" id="email" class="form-group
                             control-label">E-mail Address</label>
-                            <div class="col-sm-6">
+                            <div class="form-group">
                                 <input class="form-control" type="text" name="email"
                                  value="{% if form.data.email %}{{form.data.email}}{% else %}{{form.initial.email}}{% endif %}" />
                                 <div class="visualclear"></div>
@@ -108,8 +69,8 @@
                         <br />
                         <div class="visualclear"></div>
                         <div class="form-group {% if form.subject.errors %}has-error{% endif %}">
-                            <label for="subject" id="subject" class="col-sm-2 control-label">Subject</label>
-                            <div class="col-sm-6">
+                            <label for="subject" id="subject" class="control-label">Subject</label>
+                            <div class="form-group">
                                 {{form.subject}}
                                 <p class="help-block">Subject is a required field.</p>
                             </div>
@@ -117,32 +78,29 @@
                         <br />
                         <div class="form-group {% if form.description.errors %}has-error{% endif %}">
                             <label for="description"
-                                    id="description" class="col-sm-2 control-label">Description</label>
-                            <div class="col-sm-6">
+                                    id="description" class="control-label">Description</label>
+                            <div class="form-group">
                                 {{form.description}}
                                 <p class="help-block">Description is a required field.</p>
                             </div>
                         </div>
+
                         <div class="form-group {% if form.decoy.errors %}has-error{% endif %}">
                             <input type="text" name="decoy" value="" placeholder="Please leave blank" autofill="off" />
                             <p class="help-block decoy">If you can see the decoy field, please leave it blank.</p>
                         </div>
 
-                        <div class="row">
+                    <div class="row">
                             <div class="col-sm-8">
                                 <input class="btn btn-primary pull-right" id="submitt" type="submit" value="Send Feedback"/>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> <!-- /container -->
         </div>
+
+            {% endblock %}
+    {% endblock %}
     </div>
-
-
-
-
-        {% endblock %}
-{% endblock %}
-</div>
 {% include 'main_base.html' %}

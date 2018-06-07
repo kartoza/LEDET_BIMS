@@ -20,10 +20,10 @@ from django.conf.urls.static import static
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^grappelli/', include('grappelli.urls')),
+    url('^contact/', include('contactus.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('bims.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
-    url('^contact/', include('contactus.urls')),
 ]
 
 if settings.DEBUG:
