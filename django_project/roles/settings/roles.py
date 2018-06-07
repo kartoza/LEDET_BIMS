@@ -13,11 +13,41 @@ class DataAdmin(AbstractUserRole):
     }
 
 
-class User(AbstractUserRole):
+class BiodiversityManagement(AbstractUserRole):
     available_permissions = {}
 
 
-class Validator(AbstractUserRole):
-    available_permissions = {
-        'can_validate_data': True
-    }
+class EnvironmentalResearchAndPlanning(AbstractUserRole):
+    available_permissions = {}
+
+
+class EnvironmentalImpactManagement(AbstractUserRole):
+    available_permissions = {}
+
+
+class IntegratedEnvironmentalManagement(AbstractUserRole):
+    available_permissions = {}
+
+
+class IntegratedPollutionWaste(AbstractUserRole):
+    available_permissions = {}
+
+
+class ProtectedAreaManagement(AbstractUserRole):
+    available_permissions = {}
+
+
+class WildlifeTradeRegulation(AbstractUserRole):
+    available_permissions = {}
+
+
+class SouthAfricanNationalBiodiversityInstitute(AbstractUserRole):
+    available_permissions = {}
+
+
+class PolokwaneMunicipality(AbstractUserRole):
+    available_permissions = {}
+
+
+class EnvironmentalAssessmentPractitioners(AbstractUserRole):
+    available_permissions = {}
