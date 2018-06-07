@@ -89,9 +89,9 @@ CELERY_RESULT_SERIALIZER = 'json'
 BROKER_URL = 'amqp://guest:guest@%s:5672//' % os.environ['RABBITMQ_HOST']
 
 # Contact us settings
-CONTACT_US_EMAIL = 'alison@kartoza.com'
+CONTACT_US_EMAIL = 'dimas@kartoza.com'
 
 
-SERVER_EMAIL = 'alison@kartoza.com'
+SERVER_EMAIL = 'dimas@kartoza.com'
 EMAIL_HOST = 'kartoza.com'
-DEFAULT_FROM_EMAIL = 'alison@kartoza.com'
+DEFAULT_FROM_EMAIL = 'dimas@kartoza.com'
