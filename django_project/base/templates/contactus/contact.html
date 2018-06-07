@@ -39,7 +39,7 @@
             <div class="container" style="height: 100%;">
                 <div class="custom-form-container" style="margin-top: 40px;">
                     <h1>{% trans "Contact Us" %}</h1>
-                    <form class="signup" id="signup_form" method="POST" action="{% url 'account_signup' %}">{% csrf_token %}
+                    <form class="signup" id="signup_form" method="POST">{% csrf_token %}
                         {% if form.non_field_errors %}
                             <div class="alert alert-warning">
                                 {% for error in form.non_field_errors %}
@@ -72,8 +72,9 @@
                             <label for="subject" id="subject" class="control-label">Subject</label>
                             <div class="form-group">
                                 {{form.subject}}
-                                <p class="help-block">Subject is a required field.</p>
-                            </div>
+                                <p class="help-block">Subject is a required
+                                    field.</p>
+
                         </div>
                         <br />
                         <div class="form-group {% if form.description.errors %}has-error{% endif %}">
