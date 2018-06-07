@@ -68,20 +68,24 @@
         #submitt {
             color: yellow;
         }
+    .bg-secondary {
+         background-blend-mode: darken;
+        opacity: 0.3%;
+    }
     </style>
 
-    <div class="container" style="padding-top: 2%">
+    <div class="container bg-secondary" style="padding-top: 2%;">
 
         <div class="row">
             <div class="col-sm-12 col-sm-offset-1">
                 <div class="contact_us_form">
                     <div class="row">
-        <div class="col-lg-12">
-            <h2 id="title">Contact Us</h2>
-        </div>
-    </div>
+                        <div class="col-lg-12">
+                            <h2 id="title">Contact Us</h2>
+                        </div>
+                    </div>
                     <br />
-                    <form action="." method="post" name="feedback" class="form-horizontal">{% csrf_token %}
+                    <form action="." method="post" name="feedback"  class="form-horizontal" id="contactus">{% csrf_token %}
                         <div class="form-group {% if form.name.errors %}has-error{% endif %}">
                             <label for="name" id="name" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-6">
