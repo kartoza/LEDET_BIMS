@@ -140,8 +140,42 @@ header.masthead p {
     width: 100%;
 }
 
+.title-header-buttons div {
+    margin: 0 auto;
+    margin-top: 220px;
+    width: 250px;
+    padding: 5px 10px;
+    background-color: white;
+    color: #1b900d;
+    border: 2px solid #1b900d;
+    text-align: left;
+}
+
+#search {
+    border: none;
+    height: 30px;
+}
+
+#search:focus {
+    outline: none;
+}
+
+#search::placeholder {
+    font-size: 10pt;
+    font-style: italic;
+}
+
+.icon {
+    font-size: 20px;
+    font-weight: normal;
+}
+
 .title-header-buttons .btn {
-    margin-top: 250px;
+    margin-top: 20px;
+}
+
+.login-carousel {
+    margin-top: 250px !important;
 }
 
 #carouselIndicators {
@@ -300,16 +334,17 @@ html, body {
     border-radius: 0;
     margin: 10px;
     font-weight: normal;
-    color: #436461;
+    color: #1b900d;
     padding: 3px 20px;
     font-size: 13pt;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
     transition: all 0.3s ease 0s;
+    border: 2px solid #1b900d;
 }
 
 .btn-account:hover {
     color: white;
-    background-color: #436461;
+    background-color: #1b900d;
 }
 
 .section-heading-container {
