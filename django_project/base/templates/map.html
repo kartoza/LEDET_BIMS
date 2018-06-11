@@ -62,7 +62,7 @@
             <div class="layer-control sub-control-panel">
                 <img src="{% static 'img/layer-black.svg' %}" aria-hidden="true" height="35px">
             </div>
-            <div class="download-control sub-control-panel" id="download-control">
+            <div class="download-control sub-control-panel">
                 <i class="fa fa-download" aria-hidden="true"></i>
             </div>
             <div class="location-control sub-control-panel">
@@ -96,8 +96,16 @@
                 </div>
             </div>
             <div class="row">
-                <div class="slide-container">
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+                <div class="container-1">
+                    <select id="filter" name="filter">
+                        <option value="">Select a filter</option>
+                        <option value="Species name">Species Name</option>
+                        <option value="Collector">Collector</option>
+                        <option value="Date Collection">Date Collection</option>
+                    </select>
+                </div>
+                <div class="container-1">
+                    <input type="text" id="filter-text" placeholder="Filter options..."/>
                 </div>
             </div>
         </div>
@@ -112,13 +120,5 @@
     <script src="{% static "js/libs/bootstrap-4.0.0/js/bootstrap.min.js" %}"></script>
     <script src="{% static "js/views/map_control_panel2.js" %}"></script>
     {% grunt_module "map_view" %}
-    <script>
-        $(document).ready(function () {
-            $('.layer-switcher').unbind();
-            $('.location-control').on('click', function () {
-                alert('clicked')
-            })
-        })
-    </script>
 
 {% endblock %}

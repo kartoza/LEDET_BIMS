@@ -195,9 +195,29 @@ html, body, .map, .map-wrapper, #map-container {
     font-family: "Roboto Condensed";
 }
 
-#search {
+#search, #filter, #filter-text {
     border: 2px solid #ffcc00 !important;
     border-radius: 0 !important;
+}
+
+#filter, #filter-text {
+    background-color: transparent;
+    width: 100%;
+    color: white;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+
+#filter option {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+}
+
+#filter-text {
+    height: 100px;
+}
+
+#filter-text::placeholder {
+    color: white;
 }
 
 #search::placeholder {
