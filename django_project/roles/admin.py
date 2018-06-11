@@ -4,13 +4,13 @@ __date__ = '21/02/18'
 
 import json
 
-from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth.models import Group, User
 from django.contrib.gis import admin
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
+from bims.admin import CustomUserAdmin
 from bims.models.profile import Profile
 from rolepermissions.admin import RolePermissionsUserAdminMixin
 from rolepermissions.roles import RolesManager
@@ -35,7 +35,7 @@ class RolePermissionsUserForm(UserChangeForm):
             '/static/js/role-admin-form.js')
 
 
-class RolePermissionsUserAdmin(RolePermissionsUserAdminMixin, UserAdmin):
+class RolePermissionsUserAdmin(RolePermissionsUserAdminMixin, CustomUserAdmin):
     """ Displaying user using rolepermission library.
     Hide permissions because it will be
     automatically assign if groups is changed.
