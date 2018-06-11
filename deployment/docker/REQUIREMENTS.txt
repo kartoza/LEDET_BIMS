@@ -28,3 +28,6 @@ coreapi==2.3.3
 pygbif==0.2.0
 # Django BIMS
 git+https://github.com/kartoza/django-bims.git
+
+# contacts page
+django-contact-us
