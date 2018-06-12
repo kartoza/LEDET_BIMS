@@ -16,6 +16,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from links.context_processors import categories
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,6 +24,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('bims.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^links/', categories, name='list'),
 ]
 
 if settings.DEBUG:
