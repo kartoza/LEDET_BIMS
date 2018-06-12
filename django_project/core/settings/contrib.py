@@ -48,6 +48,7 @@ INSTALLED_APPS += (
     'rest_framework',
     'celery',
     'pipeline',
+    'modelsdoc',
 )
 
 MIDDLEWARE += (
@@ -92,7 +93,6 @@ CELERY_RESULT_SERIALIZER = 'json'
 BROKER_URL = 'amqp://guest:guest@rabbitmq:5672//'
 
 # django modelsdoc settings
-
 MODELSDOC_APPS = ('bims',)
 
 MODELSDOC_OUTPUT_FORMAT = 'rst'

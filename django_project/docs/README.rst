@@ -3,14 +3,13 @@ LEDET-BIMS documentation
 
 ## Technical documentation for LEDET-BIMS Project.
 
-## Firstly you need to be in the right directory where the documentation
-files are stored.
+## Firstly you need to be in the base project directory where the management
+ command is run from.
 
 ```docs/docs/```
 
-**Then to generated the documentation or append to existing docs content Run
- **
-```python manage.py listing_models --app someappmodels --output index.rst
+**Then to generated the documentation run **
+```python manage.py listing_models --output docs/docs/index.rst
 ```
 
 Options
