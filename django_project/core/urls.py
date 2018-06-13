@@ -17,12 +17,14 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^', include('bims.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^links/', include('links.urls')),
 ]
 
 if settings.DEBUG:
