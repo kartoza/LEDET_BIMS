@@ -69,8 +69,7 @@
                     {% endif %}
 
                     <div class="login-help">
-                        <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a> -
-                        <a href="{% url 'account_reset_password' %}">{% trans "Forgot Password" %}</a>
+                        <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
                     </div>
                 </div>
             </div> <!-- /container -->
@@ -82,4 +81,12 @@
 
 {% block foot %}
     <script src="{% static "js/libs/bootstrap-4.0.0/js/bootstrap.min.js" %}"></script>
+    <link rel="stylesheet" href="{% static 'css/landing_page.css' %}">
+    <script>
+        $(document).ready(function () {
+            $('input[id=id_password]').parent().append('' +
+                '<div class="login-help pull-right forgot-password">' +
+                '<a href="{% url 'account_reset_password' %}">{% trans "Forgot Password" %}</a></div>')
+        })
+    </script>
 {% endblock %}

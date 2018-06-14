@@ -223,16 +223,16 @@ a.anchor-entry {
     border-radius: 0;
     margin: 10px;
     font-weight: normal;
-    color: #436461;
-    padding: 0 30px;
-    border: 2px solid #436461;
+    color: #1b900d;
+    padding: 5px 30px;
+    border: 2px solid #1b900d;
     font-size: 16pt;
 }
 
 .btn-login:hover {
-    background-color: #436461;
+    background-color: #1b900d;
     color: white;
-    border: 2px solid #436461;
+    border: 2px solid #1b900d;
 }
 
 .socialaccount_ballot li {
@@ -246,7 +246,7 @@ a.anchor-entry {
     background-color: white !important;
     border-radius: 0;
     font-weight: normal;
-    color: #436461 !important;
+    color: #1b900d !important;
     border: 2px solid #e0d441;
     font-size: 9pt;
     margin: 0 auto;
@@ -256,4 +256,42 @@ a.anchor-entry {
     background-color: #e0d441 !important;
     color: white !important;
     border: 2px solid #e0d441;
+}
+
+#section-wrapper {
+    position: static !important;
+}
+
+#about {
+    position: fixed !important;
+}
+
+.forgot-password a {
+    color: #1b900d !important;
+    font-style: italic;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+    display: none;
+}
+
+div:hover::-webkit-scrollbar {
+    display: block;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: white;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.8);
 }
