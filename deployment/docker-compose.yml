@@ -60,6 +60,7 @@ services:
       - VIRTUAL_HOST=limpopo.kartoza.com
       - VIRTUAL_PORT=8080
       - RABBITMQ_HOST=rabbitmq
+      - HAYSTACK_HOST=elasticsearch
     volumes:
       - ../django_project:/home/web/django_project
       - ./static:/home/web/static:rw
@@ -220,6 +221,22 @@ services:
       - ./reports:/home/web/reports
       - ./logs:/var/log/
     restart: on-failure:5
+    networks:
+      - backend
+
+  elasticsearch:
+    # Note you cannot scale if you use conteiner_name
+    container_name: limpopo-elasticsearch
+    restart: on-failure:5
+    #  read_only: true
+    image: elasticsearch:2.4.2
+    hostname: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
     networks:
       - backend
 
