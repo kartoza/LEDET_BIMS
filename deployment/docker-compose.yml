@@ -51,6 +51,8 @@ services:
       context: ./docker
       dockerfile: Dockerfile
     hostname: uwsgi
+    depends_on:
+      - elasticsearch
     environment:
       - DATABASE_NAME=gis
       - DATABASE_USERNAME=docker
@@ -127,14 +129,14 @@ services:
       context: ./docker
       dockerfile: Dockerfile-dev
     hostname: uwsgi
-    depends_on:
-      - db
+    links:
+      - elasticsearch
     environment:
       - DATABASE_NAME=gis
       - DATABASE_USERNAME=docker
       - DATABASE_PASSWORD=docker
       - DATABASE_HOST=db
-      - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
+      - DJANGO_SETTINGS_MODULE=core.settings.dev_docker
       - PYTHONPATH=/home/web/django_project
       - VIRTUAL_HOST=limpopo.kartoza.com
       - VIRTUAL_PORT=8080
@@ -215,7 +217,7 @@ services:
       - VIRTUAL_PORT=8080
       - C_FORCE_ROOT=true
     volumes:
-      - ../django_project:/home/web/django_project
+      - ../django_project:/home/web/django_proj ect
       - ./static:/home/web/static:rw
       - ./media:/home/web/media:rw
       - ./reports:/home/web/reports
@@ -234,11 +236,12 @@ services:
     environment:
       - cluster.name=docker-cluster
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
-      - "9200:9200"
+      - "64309:9200"
     networks:
-      - backend
+      backend:
+        aliases:
+            - elasticsearch
 
 networks:
   backend:

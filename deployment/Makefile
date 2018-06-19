@@ -267,6 +267,13 @@ sync-roles:
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) run uwsgi python manage.py sync_roles
 
+elasticsearch:
+	@echo
+	@echo "------------------------------------------------------------------"
+	@echo "Running elasticsearch in production mode"
+	@echo "------------------------------------------------------------------"
+	@docker-compose -p $(PROJECT_ID) up -d elasticsearch
+
 # ----------------------------------------------------------------------------
 #    DEVELOPMENT C O M M A N D S
 # --no-deps will attach to prod deps if running
@@ -276,14 +283,14 @@ sync-roles:
 # for pydevd etc. If they dont get copied, restart pycharm...
 # ----------------------------------------------------------------------------
 
-devweb: db
+devweb: db elasticsearch
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Running in DEVELOPMENT mode"
 	@echo "------------------------------------------------------------------"
 	@docker-compose -p $(PROJECT_ID) up --no-deps -d devweb
 
-build-devweb: db
+build-devweb: db elasticsearch
 	@echo
 	@echo "------------------------------------------------------------------"
 	@echo "Building devweb"
@@ -292,7 +299,7 @@ build-devweb: db
 
 # Run pep8 style checking
 #http://pypi.python.org/pypi/pep8
-pep8:
+pep8:haystack
 	@echo
 	@echo "-----------"
 	@echo "PEP8 issues"

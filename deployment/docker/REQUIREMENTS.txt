@@ -27,5 +27,5 @@ django-filter==1.1.0
 coreapi==2.3.3
 pygbif==0.2.0
 # Django BIMS
+
 git+https://github.com/kartoza/django-bims.git
-django-haystack==2.8.1
