@@ -50,7 +50,6 @@ section {
     right: 0;
     bottom: 0;
     left: 0;
-    height: 120px;
 }
 
 .footer-shrink {
@@ -388,6 +387,10 @@ html, body {
     margin: 8px 0;
     font-size: 11pt;
     font-weight: lighter;
+}
+
+.about-links a {
+    color: white !important;
 }
 
 .dropdown-toggle {

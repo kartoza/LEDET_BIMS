@@ -30,14 +30,8 @@
         p.decoy {
             display: none !important;
         }
-
-        #page-top {
-            padding-bottom: 0 !important;
-        }
-
-        #about {
-            margin-top: 25px !important;
-            position: relative !important;
+        body {
+            padding-bottom: 10px;
         }
       
     </style>
@@ -47,7 +41,7 @@
         <div class="content">
             {% csrf_token %}
             <div class="container">
-                <div class="custom-form-container" style="margin-top: 30px;">
+                <div class="custom-form-container">
                     <h1>{% trans "Contact Us" %}</h1>
                     <form class="signup" id="signup_form" method="POST">{% csrf_token %}
                         {% if form.non_field_errors %}
