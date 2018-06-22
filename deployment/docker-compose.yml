@@ -63,6 +63,7 @@ services:
       - VIRTUAL_PORT=8080
       - RABBITMQ_HOST=rabbitmq
       - HAYSTACK_HOST=elasticsearch
+      - CONTACT_US_EMAIL=dimas@kartoza.com
     volumes:
       - ../django_project:/home/web/django_project
       - ./static:/home/web/static:rw
@@ -141,6 +142,7 @@ services:
       - VIRTUAL_HOST=limpopo.kartoza.com
       - VIRTUAL_PORT=8080
       - RABBITMQ_HOST=rabbitmq
+      - CONTACT_US_EMAIL=dimas@kartoza.com
     volumes:
       - ../django_project:/home/web/django_project
       - ./static:/home/web/static
