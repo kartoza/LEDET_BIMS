@@ -27,5 +27,3 @@ HAYSTACK_CONNECTIONS = {
         'INDEX_NAME': 'haystack',
     },
 }
-
-CONTACT_US_EMAIL = 'dimas@kartoza.com'
