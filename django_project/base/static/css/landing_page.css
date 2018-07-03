@@ -150,16 +150,16 @@ header.masthead p {
     text-align: left;
 }
 
-#search1 {
+#search-on-map {
     border: none;
     height: 30px;
 }
 
-#search1:focus {
+#search-on-map:focus {
     outline: none;
 }
 
-#search1::placeholder {
+#search-on-map::placeholder {
     font-size: 10pt;
     font-style: italic;
 }
