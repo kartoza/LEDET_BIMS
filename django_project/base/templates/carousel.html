@@ -1,3 +1,5 @@
+{% load static from staticfiles %}
+
 <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         {% for header in headers %}
@@ -32,11 +34,11 @@
         {% else %}
             <div class="container-1">
                 <span class="icon"><i class="fa fa-search"></i></span>
-                <input type="search" id="search" placeholder="Search on map..."/>
+                <input type="search" id="search1" placeholder="Search on map..." onkeyup="searchOnMap(event)"/>
             </div>
-            <a class="btn btn-account btn-l js-scroll-trigger" href="#">MY PROFILE</a>
+            <a class="btn btn-account btn-l js-scroll-trigger" href="/profile/">MY PROFILE</a>
             <a class="btn btn-account btn-l js-scroll-trigger" href="/map">MAP</a>
-            <a class="btn btn-account btn-l js-scroll-trigger" href="#">UPLOAD</a>
+            <a class="btn btn-account btn-l js-scroll-trigger" href="/upload/">UPLOAD</a>
         {% endif %}
     </div>
 </div>

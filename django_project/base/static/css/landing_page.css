@@ -150,16 +150,16 @@ header.masthead p {
     text-align: left;
 }
 
-#search {
+#search1 {
     border: none;
     height: 30px;
 }
 
-#search:focus {
+#search1:focus {
     outline: none;
 }
 
-#search::placeholder {
+#search1::placeholder {
     font-size: 10pt;
     font-style: italic;
 }
