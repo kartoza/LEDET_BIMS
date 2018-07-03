@@ -29,3 +29,5 @@ pygbif==0.2.0
 # Django BIMS
 
 git+https://github.com/kartoza/django-bims.git
+git+https://github.com/kartoza/kbims-fish.git
+git+https://github.com/kartoza/kbims-reptile.git
