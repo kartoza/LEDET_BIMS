@@ -23,7 +23,10 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^contact/', include('contactus.urls')),
     url(r'^', include('bims.urls')),
+    url(r'^', include('base.urls')),
     url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'^', include(('fish.urls', 'fish'), namespace='fish')),
+    url(r'^', include(('reptile.urls', 'reptile'), namespace='reptile')),
 ]
 
 if settings.DEBUG:
