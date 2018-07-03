@@ -7,7 +7,7 @@ function searchOnMap(event) {
 }
 
 $(document).ready(function () {
-    if(location.pathname === '/map/'){
+    if(location.pathname === '/map/' && location.search.includes('search')){
         setTimeout(function () {
             var search = location.search;
             search = search.replace('?search=', '');
