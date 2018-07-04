@@ -1,0 +1,57 @@
+{
+  "type": "selection",
+  "guid": "b12f845c",
+  "source": "a407f8694",
+  "data": {
+    "nodes": [
+      {
+        "id": "TEMPLATE_21ac4100",
+        "x": 720,
+        "y": 750,
+        "width": 57,
+        "height": 53,
+        "rotation": 0,
+        "transform": "matrix(1 0 0 1 720 750)",
+        "inspectables": {
+          "width_policy": "fixed",
+          "height_policy": "fixed",
+          "background_color": "rgb(0,0,0)",
+          "stroke_color": "rgb(0,0,0)",
+          "stroke_width": 0,
+          "stroke_style": "solid",
+          "opacity": 100,
+          "path": "M16.5 3C14.76 3 13.09 3.81 12 5.09 10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5 2 12.28 5.4 15.36 10.55 20.04L12 21.35 13.45 20.03C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3ZM12.1 18.55L12 18.65 11.9 18.55C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5 9.04 5 10.54 5.99 11.07 7.36H12.94C13.46 5.99 14.96 5 16.5 5 18.5 5 20 6.5 20 8.5 20 11.39 16.86 14.24 12.1 18.55Z",
+          "path_bbox_width": 0,
+          "path_bbox_height": 0,
+          "size": 24,
+          "aspect_lock": true,
+          "fe_dropshadow_enabled": false,
+          "fe_dropshadow_opacity": 75,
+          "fe_dropshadow_angle": 90,
+          "fe_dropshadow_distance": 5,
+          "fe_dropshadow_size": 5,
+          "fe_dropshadow_color": "rgb(0, 0, 0)",
+          "fe_blur_enabled": false,
+          "fe_blur_size": 5
+        },
+        "text": "",
+        "name": "plain-svg"
+      }
+    ],
+    "hierarchy": {
+      "TEMPLATE_21ac4100": {
+        "id": "f2a5099d",
+        "type": "item",
+        "locked": false,
+        "link": null,
+        "aspect_lock": false,
+        "visible": true,
+        "instance_name": "Plain SVG 10"
+      }
+    },
+    "size": {
+      "width": 57,
+      "height": 53
+    }
+  }
+}
