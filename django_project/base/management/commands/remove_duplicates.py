@@ -18,17 +18,13 @@ class Command(BaseCommand):
             'collector',
         ]
 
-        duplicates = (
-            BiologicalCollectionRecord.objects.values(*unique_fields)
-                .order_by()
-                .annotate(max_id=Max('id'), count_id=Count('id'))
-                .filter(count_id__gt=1)
-        )
+        duplicates = BiologicalCollectionRecord.objects.\
+            values(*unique_fields).order_by().\
+            annotate(max_id=Max('id'), count_id=Count('id')).\
+            filter(count_id__gt=1)
 
         for duplicate in duplicates:
-            (
-                BiologicalCollectionRecord.objects.
-                    filter(**{x: duplicate[x] for x in unique_fields}).
-                    exclude(id=duplicate['max_id']).
-                    delete()
-            )
+            BiologicalCollectionRecord.\
+                objects.\
+                filter(**{x: duplicate[x] for x in unique_fields}).\
+                exclude(id=duplicate['max_id']).delete()
