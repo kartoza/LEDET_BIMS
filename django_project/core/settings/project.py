@@ -60,3 +60,4 @@ GRUNT_MODULES = {
 }
 
 ACCOUNT_ADAPTER = 'bims.adapters.account_adapter.AccountAdapter'
+NAVBAR_UPLOAD_URL = '/upload-options/'
