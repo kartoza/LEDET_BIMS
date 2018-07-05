@@ -114,6 +114,7 @@ TEMPLATES = [
                 # `allauth` needs this from django
                 'django.template.context_processors.request',
                 'base.context_processor.add_links',
+                'bims.context_processor.custom_navbar_url',
             ],
         },
     },
