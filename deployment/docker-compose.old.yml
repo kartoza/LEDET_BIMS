@@ -45,7 +45,7 @@ uwsgi:
     - DATABASE_USERNAME=docker
     - DATABASE_PASSWORD=docker
     - DATABASE_HOST=db
-    - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
+    - DJANGO_SETTINGS_MODULE=ledet_core.settings.prod_docker
     - VIRTUAL_HOST=healthyrivers.kartoza.com
     - VIRTUAL_PORT=8080
     - RABBITMQ_HOST=rabbitmq
@@ -115,7 +115,7 @@ devweb:
     - DATABASE_USERNAME=docker
     - DATABASE_PASSWORD=docker
     - DATABASE_HOST=db
-    - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
+    - DJANGO_SETTINGS_MODULE=ledet_core.settings.prod_docker
     - PYTHONPATH=/home/web/django_project
     - VIRTUAL_HOST=healthyrivers.kartoza.com
     - VIRTUAL_PORT=8080
@@ -190,7 +190,7 @@ worker:
     - DATABASE_PASSWORD=docker
     - DATABASE_HOST=db
     - RABBITMQ_HOST=rabbitmq
-    - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
+    - DJANGO_SETTINGS_MODULE=ledet_core.settings.prod_docker
     - VIRTUAL_HOST=healthyrivers.kartoza.com
     - VIRTUAL_PORT=8080
     - C_FORCE_ROOT=true
