@@ -29,6 +29,12 @@ urlpatterns = [
     url(r'^', include(('reptile.urls', 'reptile'), namespace='reptile')),
 ]
 
+try:
+    from core.urls import urlpatterns as core_urlpatterns
+    urlpatterns += core_urlpatterns
+except ImportError:
+    pass
+
 if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT
