@@ -1,0 +1,29 @@
+.upload-options {
+    height: 50px;
+    line-height: 50px;
+    width: 350px;
+    border: 1px solid black;
+    margin: 10px auto;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20pt;
+    background-color: white;
+    color: #a6d7a0;
+    cursor: pointer;
+}
+
+.upload-options:hover {
+    background-color: #436461;
+    color: white;
+}
+
+.info {
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+    font-size: 16pt;
+}
+
+#options {
+    margin-top: 20px;
+}

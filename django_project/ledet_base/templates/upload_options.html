@@ -1,0 +1,24 @@
+{% extends 'main_base.html' %}
+{% load static from staticfiles %}
+
+{% block title %}
+    Uploads
+{% endblock %}
+
+{% block head %}
+    <!-- Custom styles for this template -->
+    <link href="{% static "css/user_profile.css" %}" rel="stylesheet">
+    <link href="{% static "css/upload_options.css" %}" rel="stylesheet">
+{% endblock %}
+
+{% block body_content %}
+    <div id="profile-title">
+        <span>Uploads</span>
+    </div>
+    <div><p class="info">Please choose which data to upload</p></div>
+    <div id="options">
+        <div class="upload-options" onclick="location.href='/fish/upload/'">Fish</div>
+        <div class="upload-options" onclick="location.href='/reptile/upload/'">Reptile</div>
+        <div class="upload-options" onclick="location.href='/upload/'">Generic observations</div>
+    </div>
+{% endblock %}

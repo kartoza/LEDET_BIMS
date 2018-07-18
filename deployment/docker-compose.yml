@@ -51,6 +51,8 @@ services:
       context: ./docker
       dockerfile: Dockerfile
     hostname: uwsgi
+    depends_on:
+      - elasticsearch
     environment:
       - DATABASE_NAME=gis
       - DATABASE_USERNAME=docker
@@ -60,6 +62,8 @@ services:
       - VIRTUAL_HOST=limpopo.kartoza.com
       - VIRTUAL_PORT=8080
       - RABBITMQ_HOST=rabbitmq
+      - HAYSTACK_HOST=elasticsearch
+      - CONTACT_US_EMAIL=dimas@kartoza.com
     volumes:
       - ../django_project:/home/web/django_project
       - ./static:/home/web/static:rw
@@ -126,18 +130,19 @@ services:
       context: ./docker
       dockerfile: Dockerfile-dev
     hostname: uwsgi
-    depends_on:
-      - db
+    links:
+      - elasticsearch
     environment:
       - DATABASE_NAME=gis
       - DATABASE_USERNAME=docker
       - DATABASE_PASSWORD=docker
       - DATABASE_HOST=db
-      - DJANGO_SETTINGS_MODULE=core.settings.prod_docker
+      - DJANGO_SETTINGS_MODULE=core.settings.dev_docker
       - PYTHONPATH=/home/web/django_project
       - VIRTUAL_HOST=limpopo.kartoza.com
       - VIRTUAL_PORT=8080
       - RABBITMQ_HOST=rabbitmq
+      - CONTACT_US_EMAIL=dimas@kartoza.com
     volumes:
       - ../django_project:/home/web/django_project
       - ./static:/home/web/static
@@ -214,7 +219,7 @@ services:
       - VIRTUAL_PORT=8080
       - C_FORCE_ROOT=true
     volumes:
-      - ../django_project:/home/web/django_project
+      - ../django_project:/home/web/django_proj ect
       - ./static:/home/web/static:rw
       - ./media:/home/web/media:rw
       - ./reports:/home/web/reports
@@ -222,6 +227,23 @@ services:
     restart: on-failure:5
     networks:
       - backend
+
+  elasticsearch:
+    # Note you cannot scale if you use conteiner_name
+    container_name: limpopo-elasticsearch
+    restart: on-failure:5
+    #  read_only: true
+    image: elasticsearch:2.4.2
+    hostname: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+    ports:
+      - "64309:9200"
+    networks:
+      backend:
+        aliases:
+            - elasticsearch
 
 networks:
   backend:
