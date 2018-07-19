@@ -1,0 +1,8 @@
+[submodule "django_project/fish"]
+	path = django_project/fish
+	url = https://github.com/kartoza/kbims-fish.git
+    branch = apps
+[submodule "django_project/reptile"]
+	path = django_project/reptile
+	url = https://github.com/kartoza/kbims-reptile.git
+    branch = apps
