@@ -49,6 +49,7 @@ INSTALLED_APPS += (
     'celery',
     'pipeline',
     'haystack',
+    'raven.contrib.django.raven_compat',
 )
 
 MIDDLEWARE_CLASSES += (
