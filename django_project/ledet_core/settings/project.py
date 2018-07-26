@@ -21,6 +21,7 @@ INSTALLED_APPS += (
     'ledet_base',
     'fish',
     'reptile',
+    'raven.contrib.django.raven_compat',
 )
 
 try:

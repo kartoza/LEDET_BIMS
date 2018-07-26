@@ -91,18 +91,9 @@ if 'raven.contrib.django.raven_compat' in INSTALLED_APPS and sentry_key:
                 'level': 'DEBUG',
                 'class': 'logging.StreamHandler',
                 'formatter': 'verbose'
-            },
-            'null': {
-                'class': 'django.utils.log.NullHandler',
-            },
+            }
         },
         'loggers': {
-            # Special rules to not bother logging when host is
-            # not allowed otherwise we get lots of mail spam....
-            'django.security.DisallowedHost': {
-                'handlers': ['null'],
-                'propagate': False,
-            },
             'django.db.backends': {
                 'level': 'ERROR',
                 'handlers': ['console'],
