@@ -19,8 +19,6 @@ from .utils import absolute_path
 INSTALLED_APPS += (
     'bims',
     'ledet_base',
-    'fish',
-    'reptile',
     'raven.contrib.django.raven_compat',
 )
 
@@ -115,4 +113,3 @@ GRUNT_MODULES = {
 }
 
 ACCOUNT_ADAPTER = 'bims.adapters.account_adapter.AccountAdapter'
-NAVBAR_UPLOAD_URL = '/upload-options/'
