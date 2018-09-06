@@ -218,3 +218,7 @@ h1 {
     font-size: 11pt !important;
     padding-bottom: 0 !important;
 }
+
+.login {
+    margin-bottom: 20px;
+}
