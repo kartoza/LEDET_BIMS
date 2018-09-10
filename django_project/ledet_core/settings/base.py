@@ -59,13 +59,7 @@ STATIC_ROOT = '/home/web/static'
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    absolute_path('core', 'base_static'),
-    absolute_path('base', 'static'),
-)
+STATICFILES_DIRS = []
 
 # List of finder classes that know how to find static files in
 # various locations.
@@ -100,8 +94,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             # project level templates
-            absolute_path('core', 'base_templates'),
-            absolute_path('base', 'templates'),
+            absolute_path('ledet_core', 'base_templates'),
+            absolute_path('ledet_base', 'templates'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -120,7 +114,7 @@ TEMPLATES = [
     },
 ]
 
-MIDDLEWARE = (
+MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
